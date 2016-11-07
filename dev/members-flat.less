@@ -1,0 +1,488 @@
+// Colors
+@members-purple: #B0197E;
+@members-purple-dark: darken(@members-purple, 3%);
+@members-purple-light: lighten(@members-purple, 40%);
+@members-pink: #E11C52;
+@members-pink-dark: darken(@members-pink, 3%);
+@members-pink-light: lighten(@members-pink, 50%);
+@charcoal: #222;
+@gray: #bbb;
+@lightgray: #EEE;
+@white: #fff;
+
+@color-success: #5ba215;
+@color-info: #3d9ec9;
+@color-warning: #ffb43f;
+
+/*
+* General
+*/
+
+// Import and apply the Open Sans font
+// @import url(https://fonts.googleapis.com/css?family=Open+Sans:700,400);
+body {
+  font-family: -apple-system, sans-serif; //'Open Sans', sans-serif;
+}
+
+// Links
+a {
+  transition: all .1s ease-in;
+  &:link, &:visited {
+    color: @members-purple;
+  }
+  &:hover, &:active {
+    color: @members-purple-dark;
+  }
+  &.btn {
+    color: @white;
+  }
+}
+
+/*
+* Button
+*/
+
+.btn {
+  transition: all .1s ease-in;
+  &.btn-link {
+    color: @members-purple;
+    &:hover {
+      color: @members-purple-dark;
+    }
+  }
+  &.btn-default {
+    
+    border-color: #E5E5E5;
+    &:hover {
+      border-color:#E5E5E5;
+    }
+  }
+  &.btn-primary {
+    background-color: @members-purple;
+    border-color: @members-purple;
+    &:hover {
+      background-color: darken(@members-purple, 5%);
+      border-color: darken(@members-purple, 5%);
+    }
+  }
+  &.btn-success {
+    background-color: @color-success;
+    border-color: @color-success;
+    &:hover {
+      background-color: darken(@color-success, 5%);
+      border-color: darken(@color-success, 5%);
+    }
+  }
+  &.btn-info {
+    background-color: @color-info;
+    border-color: @color-info;
+    &:hover {
+      background-color: darken(@color-info, 5%);
+      border-color: darken(@color-info, 5%);
+    }
+  }
+  &.btn-warning {
+    background-color: @color-warning;
+    border-color: @color-warning;
+    &:hover {
+      background-color: darken(@color-warning, 5%);
+      border-color: darken(@color-warning, 5%);
+    }
+  }
+  &.btn-danger {
+    color: @white;
+    background-color: @members-pink;
+    border-color: @members-pink;
+    &:hover {
+      background-color: darken(@members-pink, 5%);
+      border-color: darken(@members-pink, 5%);
+    }
+  }
+}
+
+/*
+* Labels 
+*/
+
+.label {
+  &.label-default {
+    background-color: @gray;
+  }
+  &.label-primary {
+    background-color: @members-purple;
+  }
+  &.label-success {
+    background-color: @color-success;
+  }
+  &.label-info {
+    background-color: @color-info;
+  }
+  &.label-warning {
+    background-color: @color-warning;
+  }
+  &.label-danger {
+    background-color: @members-pink;
+  }
+}
+
+/*
+* Badges
+*/
+
+.badge {
+  background-color: @gray;
+}
+
+/*
+* Dropdowns
+*/
+
+.dropdown-menu {
+  border-color:@white;
+  li > a {
+    color: @charcoal;
+    &:hover, &:active, &:focus {
+      background-color: @lightgray;
+      color: @charcoal;
+    } 
+  }
+  li.active > a {
+    
+    background-color: @members-purple;
+    &:hover {
+      background-color: @members-purple-dark;
+    }
+  }
+  .dropdown-header {
+    color: @gray;
+  }
+  .divider {
+    background-color: lighten(@gray, 20%);
+  }
+}
+
+/*
+* Navs
+*/
+
+.nav-tabs {
+  li.active > a {
+    color: @members-purple;
+    &:hover, &:focus {
+      color: @members-purple-dark;
+    }
+  }
+}
+
+.nav-pills {
+  li.active > a {
+    background-color: @members-purple;
+    .badge {
+      color: @members-purple-dark;
+    }
+    &:hover, &:focus {
+      background-color: @members-purple-dark;
+    }
+  }
+}
+
+/*
+* Navbar Default
+*/
+
+.navbar-default {
+  background-color: @members-pink;
+  border:none;
+  &.navbar-fixed-top {
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  .navbar-collapse {
+    border-color: darken(@members-pink, 15%);
+  }
+    .navbar-brand{
+        color: @white;
+        &:hover,&:focus{
+        color:@members-pink-light;
+    }
+    }
+    
+    .navbar-nav {
+    li > a {
+      color: @white;
+      &:hover {
+        color: @members-pink-light;
+      }
+    }
+    li.active > a {
+      background-color: @members-pink-dark;
+        color:@white;
+      &:hover, &:active, &:focus {
+        background-color: @members-pink-dark;
+        color: @members-pink-light;
+      }
+    }
+    li.dropdown {
+      a.dropdown-toggle {
+        color: @white;
+        background-color: @members-pink;
+        &:hover, &:active {
+          color: @members-pink-light;
+        }
+        &[aria-expanded=true] {
+          background-color: @members-pink-dark;
+        }
+      }
+      .dropdown-menu {
+        li > a {
+          color: @white;
+          &:hover, &:active, &:focus {
+            color: @members-pink-light;
+          }
+        }
+        li.active > a {
+          background-color: @members-pink-dark;
+        }
+        .dropdown-header {
+          color: @members-pink-light;
+        }
+        .divider {
+          background-color: @members-pink-dark;
+        }
+        // Rebuild the dropdown for non-mobile
+        @media(min-width: 768px) {
+          .dropdown-menu;
+        }
+      }
+    }
+  }
+  .navbar-toggle {
+    border-color: transparent;
+    transition: all .1s ease-in;
+    &:hover, &:focus {
+      background-color: @members-pink-dark;
+    }
+      & .icon-bar{
+          background: @white;
+      }
+  }
+}
+
+/* 
+* Navbar Inverse
+*/
+
+.navbar-inverse {
+  background-color: @members-purple;
+  border:none;
+  &.navbar-fixed-top {  
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  .navbar-collapse {
+    border-color: @members-purple-dark;
+  }
+  .navbar-brand {
+    color: @white;
+    &:hover {
+      color: @members-purple-light;
+    }
+  }
+  .navbar-nav {
+    li > a {
+      color: @white;
+      &:hover {
+        color: @members-purple-light;
+      }
+    }
+    li.active > a {
+      background-color: @members-purple-dark;
+      &:hover, &:active, &:focus {
+        background-color: @members-purple-dark;
+        color: @members-purple-light;
+      }
+    }
+    li.dropdown {
+      a.dropdown-toggle {
+        color: @white;
+        background-color: @members-purple;
+        &:hover, &:active {
+          color: @members-purple-light;
+        }
+        &[aria-expanded=true] {
+          background-color: @members-purple-dark;
+        }
+      }
+      .dropdown-menu {
+        li > a {
+          color: @white;
+          &:hover, &:active, &:focus {
+            color: @members-purple-light;
+          }
+        }
+        li.active > a {
+          background-color: @members-purple-dark;
+        }
+        .dropdown-header {
+          color: @members-purple-light;
+        }
+        .divider {
+          background-color: @members-purple-dark;
+        }
+        // Rebuild the dropdown for non-mobile
+        @media(min-width: 768px) {
+          .dropdown-menu;
+        }
+      }
+    }
+  }
+  .navbar-toggle {
+    border-color: transparent;
+    transition: all .1s ease-in;
+    &:hover, &:focus {
+      background-color: @members-purple-dark;
+    }
+  }
+}
+
+/*
+* Alerts
+*/
+
+.alert {
+  &.alert-success {
+    background-color: lighten(@color-success, 50%);
+    border-color: lighten(@color-success, 40%);
+    color: @color-success;
+  }
+  &.alert-info {
+    background-color: lighten(@color-info, 40%);
+    border-color: lighten(@color-info, 30%);
+    color: darken(@color-info, 10%);
+  }
+  &.alert-warning {
+    background-color: lighten(@color-warning, 30%);
+    border-color: lighten(@color-warning, 20%);
+    color: darken(@color-warning, 10%);
+  }
+  &.alert-danger {
+    background-color: lighten(@members-pink, 35%);
+    border-color: lighten(@members-pink, 25%);
+    color: @members-pink;
+  }
+}
+
+/*
+* Progress Bars
+*/
+
+.progress {
+  .progress-bar {
+    background-color: @members-purple;
+    &.progress-bar-success {
+      background-color: @color-success;
+    }
+    &.progress-bar-info {
+      background-color: @color-info;
+    }
+    &.progress-bar-warning {
+      background-color: @color-warning;
+    }
+    &.progress-bar-danger {
+      background-color: @members-pink;
+    }
+  }
+}
+
+/*
+* List Groups
+*/
+
+.list-group {
+  a.list-group-item {
+    &:link, &:visited {
+      color: @charcoal;
+    }
+    &:hover, &:active {
+      color: @charcoal;
+    }
+    &.active {
+      &:link, &:visited {
+        color: @white;
+        background-color: @members-purple;
+        border-color: @members-purple-dark;
+      }
+      &:hover, &:active {
+        color: @white;
+        background-color: @members-purple-dark;
+        border-color: @members-purple-dark;
+      }
+    }
+  }
+}
+
+/*
+* Panels
+*/
+
+.panel {
+  &.panel-default {
+    .panel-heading {
+      border-bottom: 2px solid @members-pink;
+    }
+  }
+  &.panel-primary {
+    border-color: @members-purple-dark;
+    .panel-heading {
+      background-color: @members-purple;
+      border-color: @members-purple-dark;
+      border-bottom: 2px solid @members-purple-dark;
+    }
+  }
+  &.panel-success {
+    border-color: lighten(@color-success, 40%);
+    .panel-heading {
+      background-color: lighten(@color-success, 50%);
+      border-color: lighten(@color-success, 40%);
+      border-bottom: 2px solid @color-success;
+      color: @color-success;
+    }
+  }
+  &.panel-info {
+    border-color: lighten(@color-info, 30%);
+    .panel-heading {
+      background-color: lighten(@color-info, 40%);
+      border-color: lighten(@color-info, 30%);
+      border-bottom: 2px solid darken(@color-info, 10%);
+      color: darken(@color-info, 10%);
+    }
+  }
+  &.panel-warning {
+    border-color: lighten(@color-warning, 20%);
+    .panel-heading {
+      background-color: lighten(@color-warning, 30%);
+      border-color: lighten(@color-warning, 20%);
+      border-bottom: 2px solid darken(@color-warning, 10%);
+      color: darken(@color-warning, 10%);
+    }
+  }
+  &.panel-danger {
+    border-color: lighten(@members-pink, 40%);
+    .panel-heading {
+      background-color: lighten(@members-pink, 35%);
+      border-color: lighten(@members-pink, 25%);
+      border-bottom: 2px solid @members-pink;
+      color: @members-pink;
+    }
+  }
+}
+
+/*
+* Carousel
+*/
+
+.carousel {
+  & > a.carousel-control {
+    color: @white;
+  }
+}
+
+
