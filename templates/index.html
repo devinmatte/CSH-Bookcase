@@ -241,62 +241,97 @@
     <![endif]-->
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                      data-target="#csh-example-navbar-collapse-2">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">CSH Bookcase</a>
-          </div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#csh-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">CSH Bookcase</a>
+        </div>
 
-          <div class="collapse navbar-collapse" id="csh-example-navbar-collapse-2">
-              <ul class="nav navbar-nav">
-                  <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                  <li><a href="#">Link</a></li>
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                         aria-expanded="false">Dropdown <span class="caret"></span></a>
-                      <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Separated link</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">One more separated link</a></li>
-                      </ul>
-                  </li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                  <li class="dropdown navbar-user">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                         aria-expanded="false">
-                          <img src="https://profiles.csh.rit.edu/image/matted">
-                          Devin Matte
-                          <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Profile</a></li>
-                          <li><a href="#">Settings</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Logout</a></li>
-                      </ul>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </nav>
+        <div class="collapse navbar-collapse" id="csh-example-navbar-collapse-2">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown navbar-user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false">
+                        <img src="https://profiles.csh.rit.edu/image/matted">
+                        Devin Matte
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 
-<div class="container">
-  <div>
-    <p> Hello World </p>
-  </div>
+<div class="container main">
+    {% for book in books %}
+        {% if book.data != None %}
+            <div class="panel panel-default">
+                <div class="panel-body eval-panel">
+                    <div class="container-fluid">
+                        <div style="margin: auto" class="row">
+                            <h4 id="title"><b>{{ book.title }}</b></h4>
+                            <div class="col-sm-2 col-md-2 col-lg-3">
+                                <div style="margin:auto; width:200px">
+                                    <img class="eval-user-img" alt=""
+                                         src="{{ book.cover }}" width="100"
+                                         height="150"/>
+                                    <p id="author"><i>{% for author in book.authors %}{{ author }}{% endfor %}</i></p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <h6>Publish Date: </h6>
+                                <p>{{ book.publish_date }}</p>
+                                <h6>ISBN: </h6>
+                                <p>{{ book.ISBN }}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <h6>Number of Pages: </h6>
+                                <p>{{ book.number_of_pages }}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <h6>Publisher: </h6>
+                                <p>{% for publisher in book.publishers %}{{ publisher }}{% endfor %}</p>
+                            </div>
+                        </div>
+                        <p>Tags:
+                            {% for tag in book.tags %}<span class="label label-info">{{ tag }}</span> {% endfor %}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
 </div>
 
 
@@ -338,10 +373,10 @@
 
         function cleanSource(html) {
             html = html.replace(/×/g, "&times;")
-                    .replace(/«/g, "&laquo;")
-                    .replace(/»/g, "&raquo;")
-                    .replace(/←/g, "&larr;")
-                    .replace(/→/g, "&rarr;");
+                .replace(/«/g, "&laquo;")
+                .replace(/»/g, "&raquo;")
+                .replace(/←/g, "&larr;")
+                .replace(/→/g, "&rarr;");
 
             var lines = html.split(/\n/);
 
@@ -349,7 +384,7 @@
             lines.splice(-1, 1);
 
             var indentSize = lines[0].length - lines[0].trim().length,
-                    re = new RegExp(" {" + indentSize + "}");
+                re = new RegExp(" {" + indentSize + "}");
 
             lines = lines.map(function (line) {
                 if (line.match(re)) {
