@@ -1,14 +1,22 @@
-from flask import Flask
 from flask import render_template
 
-from book import Book
+from book import *
 
 app = Flask(__name__)
 
 
+def add_book(ISBN):
+    book = Book(ISBN)
+    db.session.add(book)
+    db.session.commit()
+
+
 @app.route('/')
 def main():
-    books = {Book(9780130125071), Book(9780980200447), Book(9780980200448)}
+    books = Book.query.all()
+
+    for book in books:
+        book.__init__(book.ISBN)
     return render_template('index.html', books=books)
 
 
