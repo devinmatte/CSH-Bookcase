@@ -28,10 +28,12 @@ class Book(db.Model):
             self.data = data[k1]
 
         if self.data is not None:
+            if 'title' in self.data:
+                self.title = self.data['title']
             if 'authors' in self.data:
-                authors = []
+                self.authors = []
                 for author in range(len(self.data['authors'])):
-                    authors.append(self.data['authors'][author]['name'])
+                    self.authors.append(self.data['authors'][author]['name'])
             if 'cover' in self.data:
                 self.cover = self.data['cover']['medium']
             if 'publish_date' in self.data:
