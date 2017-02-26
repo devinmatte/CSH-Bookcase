@@ -13,6 +13,11 @@ db = SQLAlchemy(app)
 class Book(db.Model):
     __tablename__ = 'books'
     ISBN = db.Column('ISBN', db.Integer, primary_key=True, unique=True)
+    title = db.Column('title', db.String(length=256))
+    cover = db.Column('cover', db.String(length=256))
+    publish_date = db.Column('publish_date', db.String(length=256))
+    number_of_pages = db.Column('number_of_pages', db.String(length=256))
+    authors = db.Column('authors', db.String(length=256))
 
     def print(self):
         print(self.data)
@@ -31,9 +36,10 @@ class Book(db.Model):
             if 'title' in self.data:
                 self.title = self.data['title']
             if 'authors' in self.data:
-                self.authors = []
-                for author in range(len(self.data['authors'])):
-                    self.authors.append(self.data['authors'][author]['name'])
+                self.authors = self.data['authors'][0]['name']
+                if len(self.data['authors']) > 1:
+                    for author in range(len(self.data['authors'])):
+                        self.authors += (", " + self.data['authors'][author]['name'])
             if 'cover' in self.data:
                 self.cover = self.data['cover']['medium']
             if 'publish_date' in self.data:

@@ -871,7 +871,7 @@
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
                             <input type="text" class="form-control">
-                    <span class="input-group-btn">
+                            <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Button</button>
                     </span>
                         </div>
@@ -1541,10 +1541,10 @@
 
         function cleanSource(html) {
             html = html.replace(/×/g, "&times;")
-                    .replace(/«/g, "&laquo;")
-                    .replace(/»/g, "&raquo;")
-                    .replace(/←/g, "&larr;")
-                    .replace(/→/g, "&rarr;");
+                .replace(/«/g, "&laquo;")
+                .replace(/»/g, "&raquo;")
+                .replace(/←/g, "&larr;")
+                .replace(/→/g, "&rarr;");
 
             var lines = html.split(/\n/);
 
@@ -1552,7 +1552,7 @@
             lines.splice(-1, 1);
 
             var indentSize = lines[0].length - lines[0].trim().length,
-                    re = new RegExp(" {" + indentSize + "}");
+                re = new RegExp(" {" + indentSize + "}");
 
             lines = lines.map(function (line) {
                 if (line.match(re)) {

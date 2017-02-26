@@ -304,9 +304,10 @@
                             <div class="col-sm-2 col-md-2 col-lg-3">
                                 <div style="margin:auto; width:200px">
                                     <img class="eval-user-img" alt=""
-                                         src="{{ book.cover }}" width="100" onerror="this.src='static/dist/book-default-cover.jpg';"
+                                         src="{{ book.cover }}" width="100"
+                                         onerror="this.src='static/dist/book-default-cover.jpg';"
                                          height="150"/>
-                                    <p id="author"><i>{% for author in book.authors %}{{ author }}{% endfor %}</i></p>
+                                    <p id="author"><i>{{ book.authors }}</i></p>
                                 </div>
                             </div>
 

@@ -13,6 +13,8 @@ def add_book(ISBN):
 
 @app.route('/')
 def main():
+    # add_book(9780130125071)
+
     books = Book.query.all()
 
     for book in books:
