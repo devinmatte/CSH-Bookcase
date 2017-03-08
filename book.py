@@ -18,11 +18,13 @@ class Book(db.Model):
     publish_date = db.Column('publish_date', db.String(length=256))
     number_of_pages = db.Column('number_of_pages', db.String(length=256))
     authors = db.Column('authors', db.String(length=256))
+    publishers = db.Column('publishers', db.String(length=256))
 
     def print(self):
         print(self.data)
 
     def __init__(self, ISBN):
+        db.create_all()
         self.ISBN = ISBN
         url = "https://openlibrary.org/api/books?bibkeys=ISBN:" + str(self.ISBN) + "&jscmd=data&format=json"
         response = urllib.request.urlopen(url)
@@ -51,6 +53,7 @@ class Book(db.Model):
                 for tag in range(len(self.data['subjects'])):
                     self.tags.append(self.data['subjects'][tag]['name'])
             if 'publishers' in self.data:
-                self.publishers = []
-                for publisher in range(len(self.data['publishers'])):
-                    self.publishers.append(self.data['publishers'][publisher]['name'])
+                self.publishers = self.data['publishers'][0]['name']
+                if len(self.data['publishers']) > 1:
+                    for publisher in range(len(self.data['publishers'])):
+                        self.publishers += (", " + self.data['publishers'][publisher]['name'])

@@ -13,7 +13,10 @@ def add_book(ISBN):
 
 @app.route('/')
 def main():
-    # add_book(9780130125071)
+    db.create_all()
+    #add_book(9781430209935)
+    #add_book(201122316)
+    #add_book(9780130125071)
 
     books = Book.query.all()
 
